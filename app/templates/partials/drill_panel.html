@@ -1,0 +1,58 @@
+<div id="drill-panel">
+  <h1>Drill</h1>
+  <p class="lede">Five questions for {{ role }}. Answer out loud, then type what you actually said.</p>
+
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  {% if result %}
+    <section class="card">
+      <h2>Score {{ result.score }}/10</h2>
+      <p class="muted">{{ result.analyzer }}{% if result.fallback %} · heuristic fallback{% endif %}</p>
+      <p><strong>{{ result.question }}</strong></p>
+      <p>{{ result.answer }}</p>
+      {% for tag in result.tags %}
+        <div>
+          <span class="tag {{ tag.severity }}">{{ tag.tag }} · {{ tag.severity }}</span>
+          {% if tag.evidence_quote %}
+            <p class="quote">{{ tag.evidence_quote }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <p>{{ result.feedback }}</p>
+      <h3>Strong version of your answer</h3>
+      <p>{{ result.strong_version }}</p>
+    </section>
+  {% endif %}
+
+  {% if question %}
+    <form class="card" method="post" action="/drill/answer" hx-post="/drill/answer" hx-target="#drill-panel" hx-swap="outerHTML">
+      <p class="muted">Question {{ index + 1 }} of {{ total }}</p>
+      <h2>{{ question }}</h2>
+      <input type="hidden" name="question_text" value="{{ question }}">
+      <label for="her_answer">Your answer</label>
+      <textarea id="her_answer" name="her_answer" required placeholder="What you would say out loud."></textarea>
+      <button type="submit">Score this answer</button>
+    </form>
+  {% elif done %}
+    <section class="card">
+      <h2>Set complete</h2>
+      <p>Five answers are saved. The streak on the patterns page includes today.</p>
+      <p><a class="button" href="/patterns">Back to patterns</a></p>
+    </section>
+  {% else %}
+    <form class="card" method="post" action="/drill/start" hx-post="/drill/start" hx-target="#drill-panel" hx-swap="outerHTML">
+      <p>Questions are written for <strong>{{ role }}</strong>.</p>
+      {% if focus_tags %}
+        <label class="check">
+          <input type="checkbox" name="focus" value="on" checked>
+          Focus mode — bias questions toward {{ focus_tags | join(" and ") }}
+        </label>
+      {% else %}
+        <p class="muted">Log an interview first if you want focus mode to aim at your top tags.</p>
+      {% endif %}
+      <button type="submit">Give me 5 questions</button>
+    </form>
+  {% endif %}
+</div>

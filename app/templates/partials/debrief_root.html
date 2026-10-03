@@ -1,0 +1,74 @@
+<div id="debrief-root">
+  <h1>Debrief</h1>
+  <p class="lede">Dump the interview the way you remember it. Messy is fine. Start each block with Q: and A:.</p>
+
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  {% if result %}
+    <section class="card">
+      <h2>{{ result.company }} · {{ result.role }}</h2>
+      <p>
+        <span class="badge {{ result.outcome }}">{{ result.outcome }}</span>
+        <span class="muted">tagged by {{ result.analyzer }}{% if result.fallback %} (heuristic fallback){% endif %}</span>
+      </p>
+      {% for pair in result.pairs %}
+        <h3>{{ pair.question }}</h3>
+        <p>{{ pair.answer }}</p>
+        {% if pair.tags %}
+          {% for tag in pair.tags %}
+            <div>
+              <span class="tag {{ tag.severity }}">{{ tag.tag }} · {{ tag.severity }}</span>
+              {% if tag.evidence_quote %}
+                <p class="quote">{{ tag.evidence_quote }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="muted">No weakness tags on this one.</p>
+        {% endif %}
+      {% endfor %}
+      <p><a href="/patterns">See it on your patterns</a></p>
+    </section>
+  {% else %}
+    <form id="voice-form" class="card" hx-post="/debrief/transcribe" hx-target="#dump-slot" hx-swap="innerHTML" hx-encoding="multipart/form-data">
+      <label for="audio">Voice note <span class="hint">.m4a or .mp3. Transcribed on this machine, then deleted.</span></label>
+      <input id="audio" name="audio" type="file" accept=".m4a,.mp3,audio/mp4,audio/mpeg">
+      <button class="secondary" type="submit">Transcribe into the dump</button>
+    </form>
+    <form id="debrief-form" class="card" method="post" action="/debrief" hx-post="/debrief" hx-target="#debrief-root" hx-swap="outerHTML">
+      <div class="row">
+        <div>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" required value="{{ company or '' }}">
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <input id="role" name="role" type="text" required value="{{ role or '' }}">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="outcome">Outcome</label>
+          <select id="outcome" name="outcome">
+            {% for option in ["rejected", "ghosted", "offer", "unknown"] %}
+              <option value="{{ option }}" {% if (outcome or "rejected") == option %}selected{% endif %}>{{ option }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label for="interview_date">Date</label>
+          <input id="interview_date" name="interview_date" type="date" value="{{ interview_date or today }}">
+        </div>
+      </div>
+      <label for="notes">Notes <span class="hint">optional</span></label>
+      <input id="notes" name="notes" type="text" value="{{ notes or '' }}">
+
+      <div id="dump-slot">
+        {% include "partials/dump_field.html" %}
+      </div>
+      <button type="submit">Save and tag</button>
+    </form>
+  {% endif %}
+</div>

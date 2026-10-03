@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Settings — PostMortem{% endblock %}
+{% block content %}
+  <h1>Settings</h1>
+  <p class="lede">One person, one target role. The analyzer reads these on every tag.</p>
+  {% if saved %}
+    <p class="card">Saved.</p>
+  {% endif %}
+  <form class="card" method="post" action="/settings">
+    <label for="target_role">Target role</label>
+    <input id="target_role" name="target_role" type="text" value="{{ prefs.target_role }}">
+    <label for="domain">Domain</label>
+    <input id="domain" name="domain" type="text" value="{{ prefs.domain }}">
+    <label for="weak_areas">Self-reported weak areas <span class="hint">comma separated tags</span></label>
+    <input id="weak_areas" name="weak_areas" type="text" value="{{ prefs.weak_areas }}">
+    <p class="muted">Active analyzer is {{ analyzer }}, set with the ANALYZER env var (heuristic, ollama, backboard, or tinker).</p>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

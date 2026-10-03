@@ -1,0 +1,5 @@
+{% if error %}
+  <p class="error">{{ error }}</p>
+{% endif %}
+<label for="dump">What they asked, and what you said</label>
+<textarea id="dump" name="dump" required placeholder="Q: Tell me about a time you improved a slow endpoint.&#10;A: I cached the query and it felt faster. (40 sec)&#10;&#10;Q: How do you debug an incident?&#10;A: I check the logs.">{{ dump or '' }}</textarea>

@@ -1,0 +1,34 @@
+services:
+  # Always-on web service. The starter plan stays up; a Render credit covers it.
+  # Voice notes need CPU and a whisper download on first use, so the default
+  # analyzer on the server is the heuristic. Point ANALYZER at backboard or
+  # tinker once those keys are set.
+  - type: web
+    name: duster
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.11"
+      - key: DATABASE_URL
+        value: sqlite:///./duster.db
+      - key: ANALYZER
+        value: heuristic
+      - key: BACKBOARD_BASE_URL
+        value: https://app.backboard.io/api
+      - key: BACKBOARD_LLM_PROVIDER
+        value: openrouter
+      - key: BACKBOARD_MODEL
+        value: qwen/qwen-2.5-7b-instruct
+      - key: BACKBOARD_API_KEY
+        sync: false
+      - key: TINKER_API_KEY
+        sync: false
+      - key: TINKER_MODEL_NAME
+        sync: false
+      - key: OLLAMA_BASE_URL
+        value: http://localhost:11434
+      - key: WHISPER_MODEL
+        value: base

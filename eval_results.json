@@ -1,0 +1,39 @@
+{
+  "heuristic": {
+    "precision": 0.35,
+    "recall": 0.5,
+    "no_metrics_false_negative_rate": 0.5,
+    "no_metrics_positives": 4,
+    "true_positives": 7,
+    "false_positives": 13,
+    "false_negatives": 7,
+    "fallback_count": 0,
+    "examples": 10,
+    "analyzer": "heuristic"
+  },
+  "ollama": {
+    "precision": 0.35,
+    "recall": 0.5,
+    "no_metrics_false_negative_rate": 0.5,
+    "no_metrics_positives": 4,
+    "true_positives": 7,
+    "false_positives": 13,
+    "false_negatives": 7,
+    "fallback_count": 10,
+    "examples": 10,
+    "analyzer": "ollama:qwen2.5:7b",
+    "note": "Every call fell back to the heuristic. These numbers are not a measurement of the base or fine-tuned model."
+  },
+  "tinker": {
+    "precision": 0.5,
+    "recall": 0.429,
+    "no_metrics_false_negative_rate": 0.5,
+    "no_metrics_positives": 4,
+    "true_positives": 6,
+    "false_positives": 6,
+    "false_negatives": 8,
+    "fallback_count": 0,
+    "examples": 10,
+    "analyzer": "tinker:tinker://782c1624-ede2-54c6-a154-d9dff6fcf9c3:train:1/sampler_weights/duster"
+  }
+}

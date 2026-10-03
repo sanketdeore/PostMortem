@@ -1,0 +1,282 @@
+{
+  "sample_size": 10,
+  "provider": "openrouter",
+  "per_model": {
+    "llama-3.1-8b-instruct": {
+      "slug": "meta-llama/llama-3.1-8b-instruct",
+      "rows": [
+        {
+          "question": "Tell me about a time you sped up a service.",
+          "tags": [
+            "rambling"
+          ],
+          "latency_ms": 2911.6,
+          "input_tokens": 231,
+          "output_tokens": 42,
+          "reported_cost": null
+        },
+        {
+          "question": "How would you design a rate limiter?",
+          "tags": [
+            "off_topic",
+            "too_short"
+          ],
+          "latency_ms": 85018.2,
+          "input_tokens": 254,
+          "output_tokens": 68,
+          "reported_cost": null
+        },
+        {
+          "question": "Describe a production incident you owned.",
+          "tags": [
+            "weak_closing"
+          ],
+          "latency_ms": 42315.6,
+          "input_tokens": 251,
+          "output_tokens": 58,
+          "reported_cost": null
+        },
+        {
+          "question": "Why this company?",
+          "tags": [
+            "off_topic"
+          ],
+          "latency_ms": 2370.8,
+          "input_tokens": 233,
+          "output_tokens": 51,
+          "reported_cost": null
+        },
+        {
+          "question": "Tell me about a disagreement with a teammate.",
+          "tags": [
+            "no_structure"
+          ],
+          "latency_ms": 2249.5,
+          "input_tokens": 258,
+          "output_tokens": 42,
+          "reported_cost": null
+        },
+        {
+          "question": "What is your greatest weakness?",
+          "tags": [
+            "weak_closing"
+          ],
+          "latency_ms": 67982.1,
+          "input_tokens": 224,
+          "output_tokens": 41,
+          "reported_cost": null
+        },
+        {
+          "question": "Walk me through a project you are proud of.",
+          "tags": [
+            "no_structure",
+            "off_topic",
+            "rambling"
+          ],
+          "latency_ms": 2859.0,
+          "input_tokens": 268,
+          "output_tokens": 140,
+          "reported_cost": null
+        },
+        {
+          "question": "How do you test a payments change?",
+          "tags": [
+            "no_metrics"
+          ],
+          "latency_ms": 93430.1,
+          "input_tokens": 257,
+          "output_tokens": 45,
+          "reported_cost": null
+        },
+        {
+          "question": "Tell me about a time you mentored someone.",
+          "tags": [
+            "no_structure"
+          ],
+          "latency_ms": 9496.5,
+          "input_tokens": 227,
+          "output_tokens": 40,
+          "reported_cost": null
+        },
+        {
+          "question": "Estimate capacity for this API.",
+          "tags": [
+            "rambling"
+          ],
+          "latency_ms": 3641.5,
+          "input_tokens": 294,
+          "output_tokens": 110,
+          "reported_cost": null
+        }
+      ],
+      "ok": 10,
+      "avg_latency_ms": 31227.5,
+      "total_cost_usd": 0.000313
+    },
+    "qwen2.5-7b-instruct": {
+      "slug": "qwen/qwen-2.5-7b-instruct",
+      "rows": [
+        {
+          "question": "Tell me about a time you sped up a service.",
+          "tags": [
+            "rambling"
+          ],
+          "latency_ms": 3447.9,
+          "input_tokens": 209,
+          "output_tokens": 48,
+          "reported_cost": null
+        },
+        {
+          "question": "How would you design a rate limiter?",
+          "tags": [
+            "no_metrics"
+          ],
+          "latency_ms": 2746.3,
+          "input_tokens": 52,
+          "output_tokens": 34,
+          "reported_cost": null
+        },
+        {
+          "question": "Describe a production incident you owned.",
+          "tags": [],
+          "latency_ms": 3197.7,
+          "input_tokens": 46,
+          "output_tokens": 6,
+          "reported_cost": null
+        },
+        {
+          "question": "Why this company?",
+          "tags": [
+            "off_topic"
+          ],
+          "latency_ms": 2799.3,
+          "input_tokens": 27,
+          "output_tokens": 41,
+          "reported_cost": null
+        },
+        {
+          "question": "Tell me about a disagreement with a teammate.",
+          "tags": [],
+          "latency_ms": 2950.4,
+          "input_tokens": 48,
+          "output_tokens": 2,
+          "reported_cost": null
+        },
+        {
+          "question": "What is your greatest weakness?",
+          "tags": [],
+          "latency_ms": 2295.2,
+          "input_tokens": 18,
+          "output_tokens": 2,
+          "reported_cost": null
+        },
+        {
+          "question": "Walk me through a project you are proud of.",
+          "tags": [
+            "rambling"
+          ],
+          "latency_ms": 3446.1,
+          "input_tokens": 62,
+          "output_tokens": 64,
+          "reported_cost": null
+        },
+        {
+          "question": "How do you test a payments change?",
+          "tags": [],
+          "latency_ms": 3244.1,
+          "input_tokens": 53,
+          "output_tokens": 6,
+          "reported_cost": null
+        },
+        {
+          "question": "Tell me about a time you mentored someone.",
+          "tags": [
+            "rambling"
+          ],
+          "latency_ms": 2453.6,
+          "input_tokens": 15,
+          "output_tokens": 29,
+          "reported_cost": null
+        },
+        {
+          "question": "Estimate capacity for this API.",
+          "tags": [
+            "rambling"
+          ],
+          "latency_ms": 4127.7,
+          "input_tokens": 104,
+          "output_tokens": 116,
+          "reported_cost": null
+        }
+      ],
+      "ok": 10,
+      "avg_latency_ms": 3070.8,
+      "total_cost_usd": null
+    },
+    "mistral-7b-instruct": {
+      "slug": "mistralai/mistral-7b-instruct",
+      "rows": [
+        {
+          "question": "Tell me about a time you sped up a service.",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "How would you design a rate limiter?",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "Describe a production incident you owned.",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "Why this company?",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "Tell me about a disagreement with a teammate.",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "What is your greatest weakness?",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "Walk me through a project you are proud of.",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "How do you test a payments change?",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "Tell me about a time you mentored someone.",
+          "error": "no JSON object in model response"
+        },
+        {
+          "question": "Estimate capacity for this API.",
+          "error": "no JSON object in model response"
+        }
+      ],
+      "ok": 0,
+      "avg_latency_ms": null,
+      "total_cost_usd": null
+    }
+  },
+  "tag_agreement": {
+    "llama-3.1-8b-instruct vs qwen2.5-7b-instruct": {
+      "rate": 0.3,
+      "compared": 10
+    },
+    "llama-3.1-8b-instruct vs mistral-7b-instruct": {
+      "rate": null,
+      "compared": 0
+    },
+    "qwen2.5-7b-instruct vs mistral-7b-instruct": {
+      "rate": null,
+      "compared": 0
+    }
+  },
+  "notes": {
+    "mistral-7b-instruct": "OpenRouter returned no served endpoint for mistralai/mistral-7b-instruct (and v0.1, v0.2, v0.3). Those rows are errors, not empty tag sets. qwen cost is null because that slug was not in the price catalog page we could read."
+  }
+}

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PostMortem — rejections never come with feedback</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="landing">
+  <header class="land-nav">
+    <a class="brand" href="/">PostMortem</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/patterns">Patterns</a>
+      <a href="/debrief">Debrief</a>
+      <a href="/drill">Drill</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-media">
+      <img
+        src="/static/bg-image.png"
+        alt="Sunset mountains seen through a train window"
+        decoding="async"
+      >
+    </div>
+    <div class="hero-copy">
+      <p class="hero-tagline">Rejections never come with feedback.</p>
+      <div class="hero-main">
+        <h1>See the weakness that keeps costing the offer.</h1>
+        <p class="hero-desc">Dump the interview the way you remember it. PostMortem finds the pattern across rejections, then drills the answer until the next one is stronger.</p>
+        <div class="hero-ctas">
+          <a class="button" href="/debrief">Log a debrief</a>
+          <a class="text-link" href="#features">See the features</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="band">
+    <div class="band-inner">
+      <p class="eyebrow">Features</p>
+      <h2>Everything after the interview, in one place.</h2>
+      <p class="band-lead">She leaves the call, gets rejected or ghosted, and never hears why. PostMortem keeps the interview the way she remembers it and turns the repeat mistakes into practice.</p>
+      <div class="bento">
+        <article class="bento-card span-2">
+          <h3>Debrief</h3>
+          <p>Log the company, the role, and how it ended, then dump what they asked and what she said. The formatting can be messy.</p>
+          <ul>
+            <li>Outcome is rejected, ghosted, offer, or unknown.</li>
+            <li>Q and A blocks can use colons, dashes, or markdown.</li>
+            <li>Each answer is tagged as soon as the debrief is saved.</li>
+          </ul>
+        </article>
+        <article class="bento-card">
+          <h3>Patterns</h3>
+          <p>Weakness tags are counted across every interview, not just the last one.</p>
+          <ul>
+            <li>Shown as “no_metrics — 7x in 4 sessions.”</li>
+            <li>An arrow marks whether that tag is rising or falling.</li>
+            <li>A drill streak sits next to the outcome badges.</li>
+          </ul>
+        </article>
+        <article class="bento-card">
+          <h3>Drills</h3>
+          <p>Five practice questions written for her target role. She answers, then sees the gap.</p>
+          <ul>
+            <li>Score from 0 to 10, plus the tags on that answer.</li>
+            <li>A stronger rewrite of her words, not a generic sample.</li>
+            <li>Focus mode aims the questions at her top two tags.</li>
+          </ul>
+        </article>
+        <article class="bento-card">
+          <h3>Voice notes</h3>
+          <p>If typing the dump is too much, she can drop the voice memo from the lobby.</p>
+          <ul>
+            <li>.m4a and .mp3 only, transcribed on this machine.</li>
+            <li>The text prefills the dump. The audio file is deleted.</li>
+            <li>The recording never leaves the server.</li>
+          </ul>
+        </article>
+        <article class="bento-card">
+          <h3>Memory</h3>
+          <p>One Backboard assistant keeps a thread of her practice, so the next session is not a blank page.</p>
+          <ul>
+            <li>Each drill logs the question, the score, and the top tags.</li>
+            <li>The patterns page reads that thread back as a short summary.</li>
+            <li>Tagging an interview does not write into that history.</li>
+          </ul>
+        </article>
+        <article id="models" class="bento-card span-2">
+          <h3>Open models only</h3>
+          <p>Every tag comes from rules or an open-weight model. A bad model reply falls back to the rules instead of crashing the page.</p>
+          <ul>
+            <li>Heuristic: length, missing numbers, filler, missing structure. No key.</li>
+            <li>Ollama: local qwen2.5:7b on her machine.</li>
+            <li>Backboard: one key, open weights only. Closed providers are refused.</li>
+            <li>Tinker: the LoRA fine-tune, same tag contract as the others.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="band band-tight">
+    <div class="band-inner">
+      <p class="eyebrow">Pricing</p>
+      <h2>One plan. It is free.</h2>
+      <p class="band-lead">PostMortem is built for one person. There is no seat fee and no upgrade. Optional model keys are yours to add; the coach itself stays at zero.</p>
+      <div class="price-grid">
+        <article class="price-card">
+          <p class="price-kicker">Current</p>
+          <h3>Free</h3>
+          <p class="price">$0 <span>for one job hunter</span></p>
+          <p class="price-for">The whole loop, with no account and no card.</p>
+          <h4>The coach</h4>
+          <ul>
+            <li>Unlimited debriefs, stored in a local SQLite file</li>
+            <li>Pattern counts, trend arrows, outcome badges, and a drill streak</li>
+            <li>Five-question drills with a score and a rewritten answer</li>
+            <li>Focus mode aimed at her top two weakness tags</li>
+            <li>Settings for target role, domain, and self-reported weak areas</li>
+          </ul>
+          <h4>On this machine</h4>
+          <ul>
+            <li>Heuristic tagging with no API key</li>
+            <li>Voice notes transcribed locally, then deleted</li>
+          </ul>
+          <a class="button" href="/debrief">Start a debrief</a>
+        </article>
+        <article class="price-card price-aside">
+          <p class="price-kicker">Still $0</p>
+          <h3>Optional models</h3>
+          <p class="price-for">Turning a model on does not change the plan. PostMortem never calls a closed API.</p>
+          <h4>Included either way</h4>
+          <ul>
+            <li>The site runs on the heuristic if no keys are set</li>
+            <li>A failed model response falls back to those same rules</li>
+            <li>Audio stays on the server that received the upload</li>
+          </ul>
+          <h4>Only if you add a key</h4>
+          <ul>
+            <li>Backboard tags answers and remembers drill history</li>
+            <li>Ollama runs qwen2.5:7b on your own machine</li>
+            <li>Tinker serves the fine-tuned checkpoint</li>
+          </ul>
+          <a class="button secondary" href="/settings">Set role and weak areas</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="land-foot">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <strong>PostMortem</strong>
+        <p>An interview post-mortem for one person. She does the interview, gets rejected, and never learns why. PostMortem keeps the dump, names the pattern, and makes her practice it.</p>
+      </div>
+      <div>
+        <h3>On this page</h3>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#models">Open models</a>
+      </div>
+      <div>
+        <h3>The coach</h3>
+        <a href="/patterns">Your patterns</a>
+        <a href="/debrief">Log a debrief</a>
+        <a href="/drill">Start a drill</a>
+        <a href="/settings">Role and weak areas</a>
+      </div>
+      <div>
+        <h3>How a session works</h3>
+        <p>Dump the interview, or upload a voice note.</p>
+        <p>Tags land on each answer.</p>
+        <p>Patterns show what keeps repeating.</p>
+        <p>Drills rewrite the weak answer.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>Rejections never come with feedback.</p>
+      <p>Open models only. Heuristic, Ollama, Backboard, or Tinker.</p>
+    </div>
+  </footer>
+  <script>
+    var nav = document.querySelector(".land-nav");
+    function setNav() {
+      nav.classList.toggle("is-scrolled", window.scrollY > 28);
+    }
+    setNav();
+    window.addEventListener("scroll", setNav, { passive: true });
+  </script>
+</body>
+</html>

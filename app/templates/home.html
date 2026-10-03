@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Your patterns — PostMortem{% endblock %}
+{% block content %}
+  <h1>Your patterns</h1>
+  <p class="lede">Rejections never come with feedback. PostMortem reads the interview the way you remember it and keeps the weakness that keeps showing up.</p>
+
+  <section class="card">
+    <p class="streak">
+      Drill streak: <strong>{{ streak }}</strong>
+      {{ "day" if streak == 1 else "days" }}
+    </p>
+    <p class="muted">Analyzer right now: {{ analyzer }}</p>
+  </section>
+
+  <section class="card">
+    <h2>Weakness tags</h2>
+    {% if patterns %}
+      {% for row in patterns %}
+        <div class="pattern">
+          <div>
+            <div>{{ row.label }}</div>
+            <div class="muted">{{ row.trend }}</div>
+          </div>
+          <div class="arrow {% if row.arrow == '↑' %}up{% elif row.arrow == '↓' %}down{% else %}flat{% endif %}" title="{{ row.trend }}">{{ row.arrow }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="muted">No tags yet. <a href="/debrief">Log an interview</a> and the counts will land here.</p>
+    {% endif %}
+  </section>
+
+  {% if memory %}
+    <section class="card">
+      <h2>What Backboard remembers</h2>
+      <p>{{ memory }}</p>
+    </section>
+  {% endif %}
+
+  <section class="card">
+    <h2>Interviews</h2>
+    {% if sessions %}
+      {% for item in sessions %}
+        <div class="pattern">
+          <div>
+            <strong>{{ item.company }}</strong>
+            <span class="muted">· {{ item.role }} · {{ item.date }}</span>
+            <div>
+              {% for tag in item.tags %}
+                <span class="tag">{{ tag }}</span>
+              {% endfor %}
+              <span class="muted">{{ item.qa_count }} answer{{ "" if item.qa_count == 1 else "s" }}</span>
+            </div>
+          </div>
+          <span class="badge {{ item.outcome }}">{{ item.outcome }}</span>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="muted">Nothing logged yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
